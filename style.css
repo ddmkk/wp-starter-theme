@@ -1,0 +1,283 @@
+@charset "UTF-8";
+/*
+Theme Name: テーマの名前（必須）
+Theme URL: テーマのサイトのURI
+Description: テーマの説明
+Author: 作者の名前
+Version: テーマのバージョン
+Tags: テーマの特徴を表すタグ（カンマ区切り/オプション）
+License: テーマのライセンス
+License URI: テーマのライセンスのURI
+*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/*
+ * base
+ */
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+html, body {
+  background: white;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/*
+ * Layout
+ */
+.ly_page {
+  min-height: 100vh;
+  max-width: 980px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+@media only screen and (min-width: 768px) {
+  .ly_page {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto 20px auto 20px auto;
+    -ms-grid-columns: 2fr 20px 1fr;
+        grid-template: "header header" auto "main sidebar" auto "footer footer" auto/2fr 1fr;
+    gap: 20px;
+  }
+}
+
+.ly_header {
+  grid-area: header;
+}
+
+.ly_main {
+  grid-area: main;
+}
+
+.ly_sidebar {
+  grid-area: sidebar;
+}
+
+.ly_footer {
+  grid-area: footer;
+  min-height: 100px;
+  margin-right: -20px;
+  margin-left: -20px;
+  background: #999;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px){
+  .ly_header {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+  }
+  .ly_main {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+  .ly_sidebar {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+  .ly_footer {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+  }
+}
+
+.ly_footer_bottom {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+/*
+ * Block
+ */
+.bl_post {
+  box-shadow: 0 0 1px 1px #000 inset;
+  display: flex;
+  padding: 1em;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.bl_post_imgWrapper {
+  margin-right: 20px;
+  flex: 0 0 250px;
+}
+
+.bl_post_txt {
+  max-width: 100%;
+  flex: 1 0 0%;
+}
+
+/* カテゴリー */
+.bl_cats_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bl_cats_ttl {
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 6em;
+}
+
+.bl_cats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bl_cats_item {
+  margin: 1px;
+}
+
+.bl_cats_item > a {
+  box-shadow: 0 0 1px 1px #000 inset;
+  border-radius: 4px;
+  line-height: 1;
+  background: steelblue;
+  text-decoration: none;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 6px;
+  font-size: 0.7rem;
+  color: #fff;
+}
+.bl_cats_item > a:hover {
+  color: #333;
+  background: transparent;
+}
+
+/* タグ */
+.bl_tags_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bl_tags_ttl {
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 6em;
+}
+
+.bl_tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bl_tags_item {
+  margin: 1px;
+}
+
+.bl_tags_item > a {
+  box-shadow: 0 0 1px 1px #000 inset;
+  border-radius: 4px;
+  line-height: 1;
+  background: darkgreen;
+  text-decoration: none;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 6px;
+  font-size: 0.7rem;
+  color: #fff;
+}
+.bl_tags_item > a:hover {
+  color: #333;
+  background: transparent;
+}
