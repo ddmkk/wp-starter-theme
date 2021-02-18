@@ -177,6 +177,7 @@ function my_widgets_init() {
 /**
  * アップロード時にファイル名を英数字に自動変換する
  */
+/*
 add_filter( 'sanitize_file_name', 'rename_file_md5', 10 );
 function rename_file_md5( $file_name ) {
 	$i = strrpos( $file_name, '.' );
@@ -188,4 +189,17 @@ function rename_file_md5( $file_name ) {
 	$file_name = md5( time() . $file_name ) . $ext;
 	return strtolower( $file_name );
 }
+*/
 
+/**
+ * アップロード時にファイル名を英数字に自動変換する
+ */
+add_filter( 'sanitize_file_name', 'rename_mediafile', 10 );
+function rename_mediafile( $filename ) {
+	$info = pathinfo( $filename );
+	$ext = empty( $info['extension'] ) ? '' : '.' . $info['extension'];
+	if ( $info['filename'] != 'sitemap' ) {
+		$filename = md5( time() . $ext );
+	}
+	return strtolower( $filename );
+}
