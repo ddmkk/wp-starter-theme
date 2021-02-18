@@ -174,3 +174,18 @@ function my_widgets_init() {
 	) );
 }
 
+/**
+ * アップロード時にファイル名を英数字に自動変換する
+ */
+add_filter( 'sanitize_file_name', 'rename_file_md5', 10 );
+function rename_file_md5( $file_name ) {
+	$i = strrpos( $file_name, '.' );
+	if ( $i ) {
+		$ext = '.' . substr( $file_name, $i + 1 );
+	} else {
+		$ext = '';
+	}
+	$file_name = md5( time() . $file_name ) . $ext;
+	return strtolower( $file_name );
+}
+
